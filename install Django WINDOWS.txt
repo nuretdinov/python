@@ -1,0 +1,31 @@
+при установки python галочка ADD TO PATH!
+
+создадим виртуальное окружение под именем myvenv (в директории проекта)
+python -m venv myvenv
+
+запуск виртуального окружения
+myvenv\Scripts\activate
+
+установка Django
+py -m pip install Django
+
+создаем новый проект Django
+Точка "." - важна, говорит скрипту установить Django в вашем текущем каталоге
+django-admin.exe startproject mysite .
+
+mysite/settings.py
+TIME_ZONE = 'Europe/Moscow'
+LANGUAGE_CODE = 'ru-ru'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+
+создадим БД
+python manage.py migrate
+
+запускаем сервер
+python manage.py runserver
+(остановка ctrl+c или ctrl+break)
+
+запускаем сервис
+http://127.0.0.1:8000/
