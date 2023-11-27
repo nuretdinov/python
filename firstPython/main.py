@@ -38,4 +38,31 @@ for name in friendsList:
         case _: print('dog')
 
 #break, continue
+def myFunc(a, b):
+    # global vars
+    sum = a + b
+    return sum
+
+result = myFunc(2, 5)
+print(result)
+
+
+#перехват исключений try expect
+def myFunc(a, b):
+    try:
+        return a / b
+    except (ZeroDivisionError ):
+        return 'деление на ноль'
+print(myFunc(2, 2))
+
+try:
+    with open('text.txt', 'r') as f:
+        print(f.read())
+except (FileNotFoundError):
+    print('Файл не найден')
+finally:
+    print('Все действия выполнены');
+
+#raise errorName - вызывает необходимую ошибку
+
 """
