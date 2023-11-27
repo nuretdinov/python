@@ -11,7 +11,7 @@ friendsList = ['Max', 'Ann', 'Roman'] #список
 print(friendsList[2])
 
 nameList = {'Max', 'Ann', 'Muhtar'} #набор - неупорядоченный
-guests = {'Max':'boy', 'Ann':'girl', 'Roman':'boy'} #словари
+guests = {'Max':'boy', 'Ann':'girl', 'Roman':'boy'} #кортеж (словарь)
 
 i=0
 while i <= 10:
