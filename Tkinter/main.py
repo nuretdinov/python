@@ -96,7 +96,7 @@ group1.pack(pady=10, padx=10)
 textLabel.pack(side=LEFT)
 userEmailEntry.pack(side=RIGHT)
 
-#кнопка подписки
+#кнопка подписку
 Button(window, text=' Оформить подписку ', command=getData).pack()
 
 window.mainloop()
