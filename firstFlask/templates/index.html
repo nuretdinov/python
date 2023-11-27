@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+{% block main_content %}Первый просто пример сайта на Flask{% endblock %}
+{% block links %}<a href="{{ url_for('get_page_about') }}">О проекте</a>{% endblock %}
