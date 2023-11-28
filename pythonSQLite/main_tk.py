@@ -4,15 +4,15 @@ from tkinter import *
 
 root = Tk()
 
-#соединение с БД
+# соединение с БД
 with sqlite3.connect('phonebook.db') as conn:
     cursor = conn.cursor()
 
-
-#используем для обновления вывода списка контактов
+# используем для обновления вывода списка контактов
 varChangeContactList = StringVar()
 
-#функция вывода содержимого записной книжки
+
+# функция вывода содержимого записной книжки
 def getPhonebook():
     bdContent = ''
     cursor.execute('SELECT * FROM users')
@@ -20,9 +20,12 @@ def getPhonebook():
     for field in fields:
         bdContent = bdContent + str(field[0]) + ' ' + str(field[1]) + ' ' + str(field[2]) + '\n'
     varChangeContactList.set(bdContent)
+
+
 getPhonebook()
 
-#функция добавления нового контакта
+
+# функция добавления нового контакта
 def addContact():
     newName = ent_newName.get()
     newTel = ent_newTel.get()
@@ -43,13 +46,13 @@ def addContact():
 
 
 root.title('Записная книжка')
-#формируем область для вывода записной книжки
+# формируем область для вывода записной книжки
 dbContentGroup = LabelFrame(root, text='Содержимое записной книжки', padx=20, pady=20)
 dbContentLabel = Label(dbContentGroup, textvariable=varChangeContactList, justify=LEFT)
 dbContentLabel.pack()
 dbContentGroup.pack(pady=10, padx=10)
 
-#формируем поля для добавления записей
+# формируем поля для добавления записей
 dbAddGroup = LabelFrame(root, text='Добавить новую запись', padx=20, pady=20)
 Label(dbAddGroup, text='Имя нового контакта').pack()
 ent_newName = Entry(dbAddGroup)
