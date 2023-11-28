@@ -5,8 +5,9 @@ from tkinter import *
 root = Tk()
 
 #соединение с БД
-conn = sqlite3.connect('phonebook.db')
-cursor = conn.cursor()
+with sqlite3.connect('phonebook.db') as conn:
+    cursor = conn.cursor()
+
 
 #используем для обновления вывода списка контактов
 varChangeContactList = StringVar()
@@ -26,8 +27,12 @@ def addContact():
     newName = ent_newName.get()
     newTel = ent_newTel.get()
     if newName != '' and newTel != '':
-        cursor.execute('INSERT INTO users (name, tel) VALUES (?, ?)', (newName, newTel))
-        conn.commit()
+        try:
+            cursor.execute('INSERT INTO users (name, tel) VALUES (?, ?)', (newName, newTel))
+        except sqlite3.DatabaseError as err:
+            messagebox.showerror('Ошибка', err)
+        else:
+            conn.commit()
         getPhonebook()
         ent_newName.delete(0, END)
         ent_newTel.delete(0, END)
