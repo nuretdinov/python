@@ -3,21 +3,24 @@ from tkinter import messagebox
 
 window = Tk()
 
-#функция выхода из проиложения
-def exitApp():
-    if messagebox.askquestion('Выход из программы', 'Выйти?') == 'yes': window.quit()
 
-#формируем окно приложения
+# функция выхода из проиложения
+def exit_app():
+    if messagebox.askquestion('Выход из программы', 'Выйти?') == 'yes':
+        window.quit()
+
+
+# формируем окно приложения
 window.title('Анкетирование')
 window.geometry('400x400+100+50')
 menubar = Menu(window)
 
-#формируем меню приложения
+# формируем меню приложения
 filemenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label='Файл', menu=filemenu)
 filemenu.add_command(label='Новый')
 filemenu.add_command(label='Открыть')
-filemenu.add_command(label='Выход', command=exitApp)
+filemenu.add_command(label='Выход', command=exit_app)
 
 editmenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="Правка", menu=editmenu)
@@ -27,76 +30,77 @@ editmenu.add_command(label="Вставить")
 
 window.config(menu=menubar)
 
+
 # from tkinter import messagebox
 # messagebox.showinfo('Message Title', 'Message')
 # messagebox.showerror('Message Title', 'Message')
 # messagebox.showwarning('Message Title', 'Message')
 # messagebox.askquestion('Message Title', 'Message') # yes/no
 
-#функция обработки данных из полей
-def getData():
+# функция обработки данных из полей
+def get_data():
+    # создали список для хранения полученных данных
+    user_data = {'name': '', 'subscrType': '', 'agree1': '', 'agree2': '', 'email': ''}
 
-    #создали список для хранения полученных данных
-    userData = {'name': '', 'subscrType': '', 'agree1': '', 'agree2': '', 'email': ''}
+    # получили и сохранили имя
+    user_name = ent_user_name.get()
+    user_data['name'] = user_name
 
-    #получили и сохранили имя
-    userName = userNameEntry.get()
-    userData['name'] = userName
+    # получили и сохранили список подписок
+    selected_product = list_products.curselection()
+    name_selected_product = list_products.get(selected_product)
+    user_data['subscrType'] = name_selected_product
 
-    #получили и сохранили список подписок
-    selectedProduct = listProducts.curselection()
-    nameSelectedProduct = listProducts.get(selectedProduct)
-    #print(selectedProduct)
-    userData['subscrType'] = nameSelectedProduct
+    # проверили чекбоксы и сохранили данные
+    if box_agree1_checked.get() == 1:
+        user_data['agree1'] = 'На обработку данных согласен'
+    if box_agree2_checked.get() == 1:
+        user_data['agree2'] = 'На подписку согласен'
 
-    #проверили чекбоксы и сохранили данные
-    if boxAgree1Checked.get() == 1:
-        userData['agree1'] = 'На обработку данных согласен'
-    if boxAgree2Checked.get() == 1:
-        userData['agree2'] = 'На подписку согласен'
+    # получили данные из поля с адресом электронной почты
+    userEmail = ent_user_email.get()
+    user_data['email'] = userEmail
 
-    #получили данные из поля с адресом электронной почты
-    userEmail = userEmailEntry.get()
-    userData['email'] = userEmail
-
-    #сформировали результирующие данные
-    result = userData['name'] + '\n' + userData['subscrType'] + '\n' + userData['agree1'] + '\n' + userData['agree2'] + '\n' + userData['email']
+    # сформировали результирующие данные
+    result = user_data['name'] + '\n' + user_data['subscrType'] + '\n' + user_data['agree1'] + '\n' + user_data[
+        'agree2'] + '\n' + user_data['email']
 
     messagebox.showinfo('Ваши данные', result)
 
-#формируем поля анкеты
+
+# формируем поля анкеты
 Label(window, text='Заполните данные анкеты', font='Arial 12').pack()
 
-#текстовое поле ввода
+# текстовое поле ввода
 Label(window, text='Введите имя').pack()
-userNameEntry = Entry(window)
-userNameEntry.pack(pady=10)
+ent_user_name = Entry(window)
+ent_user_name.pack(pady=10)
 
-#список
+# список
 Label(window, text='Выберите продукт').pack()
-listProducts = Listbox(window, height=3)
-listProducts.insert(1, 'Интернет')
-listProducts.insert(2, 'ТВ')
-listProducts.insert(3, 'Интернет+ТВ')
-listProducts.pack(padx=0, pady=10)
+list_products = Listbox(window, height=3)
+list_products.insert(1, 'Интернет')
+list_products.insert(2, 'ТВ')
+list_products.insert(3, 'Интернет+ТВ')
+list_products.pack(padx=0, pady=10)
 
-#чекбокс
-boxAgree1Checked = IntVar()
-boxAgree2Checked = IntVar()
-boxAgree1 = Checkbutton(window, text='Согласие на обраотку данных', variable=boxAgree1Checked, onvalue=1)
-boxAgree2 = Checkbutton(window, text='Согласие на подписку', variable=boxAgree2Checked, onvalue=1)
-boxAgree1.pack()
-boxAgree2.pack()
+# чекбокс
+box_agree1_checked = IntVar()
+box_agree2_checked = IntVar()
+chk_box_agree1 = Checkbutton(window, text='Согласие на обраотку данных', variable=box_agree1_checked, onvalue=1)
+chk_box_agree2 = Checkbutton(window, text='Согласие на подписку', variable=box_agree2_checked, onvalue=1)
+chk_box_agree1.pack()
+chk_box_agree2.pack()
 
-#группировка
+# группировка
 group1 = LabelFrame(window, text='Идентификатор пользователя', padx=5, pady=5)
-textLabel = Label(group1, text='E-mail: ')
-userEmailEntry = Entry(group1)
+txt_label = Label(group1, text='E-mail: ')
+ent_user_email = Entry(group1)
 group1.pack(pady=10, padx=10)
-textLabel.pack(side=LEFT)
-userEmailEntry.pack(side=RIGHT)
+txt_label.pack(side=LEFT)
+ent_user_email.pack(side=RIGHT)
 
-#кнопка подписку
-Button(window, text=' Оформить подписку ', command=getData).pack()
+# кнопка подписку
+Button(window, text=' Оформить подписку ', command=get_data).pack()
 
 window.mainloop()
