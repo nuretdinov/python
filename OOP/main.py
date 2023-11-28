@@ -1,36 +1,40 @@
 from datetime import datetime, date, time
 
+
 class User:
     def __init__(self, name, birth, email):
         self.name = name
         self.birth = birth
         self.email = email
 
-    def getAge(self):
-        nowDate = date.today()
-        userAge = nowDate.year - self.birth.year
-        return userAge
+    def get_age(self):
+        now_date = date.today()
+        user_age = now_date.year - self.birth.year
+        return user_age
 
-newUser = User(
+
+new_user = User(
     "Max",
     date(1995, 8, 25),
     "max@gmail.com",
 )
 
-print(newUser.getAge())
-print(newUser.email)
+print(new_user.get_age())
+print(new_user.email)
+
 
 class Admin(User):
     def __init__(self, name, birth, email, pwd):
         super().__init__(name, birth, email)
         self.pwd = pwd
 
-newAdmin = Admin(
+
+new_admin = Admin(
     "Ann",
     date(1991, 1, 20),
     "Ann@gmail.com",
     "12345",
 )
-print(newAdmin.getAge())
-print(newAdmin.email)
-print(newAdmin.pwd)
+print(new_admin.get_age())
+print(new_admin.email)
+print(new_admin.pwd)
