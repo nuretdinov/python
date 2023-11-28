@@ -9,58 +9,58 @@ with sqlite3.connect('phonebook.db') as conn:
     cursor = conn.cursor()
 
 # используем для обновления вывода списка контактов
-varChangeContactList = StringVar()
+var_change_contact_list = StringVar()
 
 
 # функция вывода содержимого записной книжки
-def getPhonebook():
-    bdContent = ''
+def get_phonebook():
+    bd_content = ''
     cursor.execute('SELECT * FROM users')
     fields = cursor.fetchall()
     for field in fields:
-        bdContent = bdContent + str(field[0]) + ' ' + str(field[1]) + ' ' + str(field[2]) + '\n'
-    varChangeContactList.set(bdContent)
+        bd_content = bd_content + str(field[0]) + ' ' + str(field[1]) + ' ' + str(field[2]) + '\n'
+    var_change_contact_list.set(bd_content)
 
 
-getPhonebook()
+get_phonebook()
 
 
 # функция добавления нового контакта
-def addContact():
-    newName = ent_newName.get()
-    newTel = ent_newTel.get()
-    if newName != '' and newTel != '':
+def add_contact():
+    new_name = ent_new_name.get()
+    new_tel = ent_new_tel.get()
+    if new_name != '' and new_tel != '':
         try:
-            cursor.execute('INSERT INTO users (name, tel) VALUES (?, ?)', (newName, newTel))
+            cursor.execute('INSERT INTO users (name, tel) VALUES (?, ?)', (new_name, new_tel))
         except sqlite3.DatabaseError as err:
             messagebox.showerror('Ошибка', err)
         else:
             conn.commit()
-        getPhonebook()
-        ent_newName.delete(0, END)
-        ent_newTel.delete(0, END)
+        get_phonebook()
+        ent_new_name.delete(0, END)
+        ent_new_tel.delete(0, END)
         messagebox.showinfo('', 'Запись добавлена!')
-        getPhonebook()
+        get_phonebook()
     else:
         messagebox.showerror('Запись не добавлена', 'Заполните поля!')
 
 
 root.title('Записная книжка')
 # формируем область для вывода записной книжки
-dbContentGroup = LabelFrame(root, text='Содержимое записной книжки', padx=20, pady=20)
-dbContentLabel = Label(dbContentGroup, textvariable=varChangeContactList, justify=LEFT)
-dbContentLabel.pack()
-dbContentGroup.pack(pady=10, padx=10)
+db_content_group = LabelFrame(root, text='Содержимое записной книжки', padx=20, pady=20)
+db_content_label = Label(db_content_group, textvariable=var_change_contact_list, justify=LEFT)
+db_content_label.pack()
+db_content_group.pack(pady=10, padx=10)
 
 # формируем поля для добавления записей
-dbAddGroup = LabelFrame(root, text='Добавить новую запись', padx=20, pady=20)
-Label(dbAddGroup, text='Имя нового контакта').pack()
-ent_newName = Entry(dbAddGroup)
-ent_newName.pack(pady=5, padx=5)
-Label(dbAddGroup, text='Телефон нового контакта').pack()
-ent_newTel = Entry(dbAddGroup)
-ent_newTel.pack(pady=5, padx=5)
-Button(dbAddGroup, text=' Добавить ', command=addContact).pack(pady=5, padx=5)
-dbAddGroup.pack(pady=10, padx=10)
+db_add_group = LabelFrame(root, text='Добавить новую запись', padx=20, pady=20)
+Label(db_add_group, text='Имя нового контакта').pack()
+ent_new_name = Entry(db_add_group)
+ent_new_name.pack(pady=5, padx=5)
+Label(db_add_group, text='Телефон нового контакта').pack()
+ent_new_tel = Entry(db_add_group)
+ent_new_tel.pack(pady=5, padx=5)
+Button(db_add_group, text=' Добавить ', command=add_contact).pack(pady=5, padx=5)
+db_add_group.pack(pady=10, padx=10)
 
 root.mainloop()
