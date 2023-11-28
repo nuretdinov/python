@@ -1,59 +1,68 @@
-"""
 num1 = input('Введите первое число: ')
 num2 = input('Введите второе число:')
 sum = int(num1) + int(num2)
 print('Сумма= ' + str(sum))
 
-#int, float, str
+# int, float, str
 # + - * / ** > < >= <= == != and or not
 
-friendsList = ['Max', 'Ann', 'Roman'] #список
-print(friendsList[2])
+friends_list = ['Max', 'Ann', 'Roman']  # список
+print(friends_list[2])
 
-nameList = {'Max', 'Ann', 'Muhtar'} #набор - неупорядоченный
-guests = {'Max':'boy', 'Ann':'girl', 'Roman':'boy'} #кортеж (словарь)
+name_list = {'Max', 'Ann', 'Muhtar'}  # набор - неупорядоченный
+guests = {'Max': 'boy', 'Ann': 'girl', 'Roman': 'boy'}  # кортеж (словарь)
 
-i=0
+i = 0
 while i <= 10:
     print(i)
     i = i + 1
 
-stopWord=''
-while stopWord != 'stop':
+stop_word = ''
+while stop_word != 'stop':
     print('+')
-    stopWord=input('Введите стоп-слово: ')
+    stop_word = input('Введите стоп-слово: ')
 
 for i in range(0, 5):
     print(i)
 
-for name in friendsList:
-    if name == 'Max' : print('boy')
-    elif name == 'Ann': print('girl')
-    else: print('dog')
+for name in friends_list:
+    if name == 'Max':
+        print('boy')
+    elif name == 'Ann':
+        print('girl')
+    else:
+        print('dog')
 
-for name in friendsList:
+for name in friends_list:
     match name:
-        case "Max": print('boy')
-        case "Ann": print('girl')
-        case _: print('dog')
+        case "Max":
+            print('boy')
+        case "Ann":
+            print('girl')
+        case _:
+            print('dog')
 
-#break, continue
-def myFunc(a, b):
+
+# break, continue
+def my_func(a, b):
     # global vars
     sum = a + b
     return sum
 
-result = myFunc(2, 5)
+
+result = my_func(2, 5)
 print(result)
 
 
-#перехват исключений try expect
-def myFunc(a, b):
+# перехват исключений try expect
+def my_func(a, b):
     try:
         return a / b
-    except (ZeroDivisionError ):
+    except (ZeroDivisionError):
         return 'деление на ноль'
-print(myFunc(2, 2))
+
+
+print(my_func(2, 2))
 
 try:
     with open('text.txt', 'r') as f:
@@ -63,6 +72,4 @@ except (FileNotFoundError):
 finally:
     print('Все действия выполнены');
 
-#raise errorName - вызывает необходимую ошибку
-
-"""
+# raise errorName - вызывает необходимую ошибку
