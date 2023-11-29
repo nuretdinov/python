@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.Surface((50, 40))
         self.image.fill(GREEN)
         self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH / 2
+        self.rect.centerx = WIDTH / 4
         self.rect.bottom = HEIGHT / 2
         self.speedx = 0
         self.speedy = 0
@@ -56,12 +56,49 @@ class Player(pygame.sprite.Sprite):
         if self.rect.top < 0:
             self.rect.top = 0
 
+class Mob(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((30, 40))
+        self.image.fill(RED)
+        self.rect = self.image.get_rect()
+        self.rect.x = WIDTH + self.rect.width
+        self.rect.y = random.randrange(50, 550)
+        self.speedy = random.randrange(1, 15)
+
+    def update(self):
+        self.rect.x -= self.speedy
+        self.rect.y += random.randrange(-10, 10)
+        if self.rect.left < 0:
+            self.rect.x = WIDTH + self.rect.width
+            self.rect.y = random.randrange(50, 550)
+            self.speedy = random.randrange(1, 10)
+
+class Blow(pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((20, 20))
+        self.image.fill(YELLOW)
+        self.rect = self.image.get_rect()
+        self.rect.centerx = x
+        self.rect.centery = y
+
+    def update(self):
+        pass
+        #self.kill()
 
 all_sprites = pygame.sprite.Group()
 player = Player()
 all_sprites.add(player)
 
-# Цикл игры
+mobs = pygame.sprite.Group()
+for i in range(8):
+    m = Mob()
+    all_sprites.add(m)
+    mobs.add(m)
+
+blows = pygame.sprite.Group()
+
 running = True
 while running:
 
@@ -71,6 +108,13 @@ while running:
     screen.fill(BLACK)
     all_sprites.draw(screen)
     pygame.display.update()
+
+    hits = pygame.sprite.spritecollide(player, mobs, False)
+    if hits:
+        print('true')
+        blow = Blow(player.rect.x, player.rect.y)
+        all_sprites.add(blow)
+        blows.add(blow)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
