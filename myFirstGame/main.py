@@ -12,6 +12,11 @@ background_rect = background.get_rect()
 blow_sprite = pygame.image.load("static/img/blow.png") # взрыв
 blow_rect = background.get_rect()
 
+# добавляем музыку
+pygame.mixer.music.load("static/music/music.mp3")
+pygame.mixer.music.play()
+blow_sound = pygame.mixer.Sound("static/music/blow_sound.mp3")
+
 alien_score=0
 hero_score=0
 
@@ -102,6 +107,7 @@ while running:
         alien_y = random.randrange(100, 500)
         alien_rect.centery = alien_y
         hero_score += 1
+        blow_sound.play()
 
 
     pygame.display.update()
