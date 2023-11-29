@@ -28,11 +28,26 @@ alien_y = random.randrange(100, 500)
 alien_sprite = pygame.image.load("static/img/alien.png")
 alien_rect = alien_sprite.get_rect()
 
+# заставка
+start = pygame.image.load("static/img/start.jpg").convert()
+gamewindow.blit(start, (0, 0))
+start_text = pygame.font.Font(None, 28)
+start_text_render = start_text.render('[..... press space .....]', True, (180, 180, 0))
+gamewindow.blit(start_text_render, (300, 420))
+pygame.display.update()
 
 running = True
+start = False
 
 while running:
 
+  # заставка ждет нажатия пробела
+  for event in pygame.event.get():
+      if event.type == pygame.KEYDOWN:
+          if event.key == pygame.K_SPACE:
+              start = True
+
+  if start:
     clock.tick(24) #fps
 
     #перемещение моба
@@ -81,15 +96,13 @@ while running:
     alien_rect.centery = alien_y
 
     if pygame.Rect.colliderect(alien_rect, hero_rect):
-        collide = True
         gamewindow.blit(blow_sprite, (alien_x, alien_y))
         alien_x = 750
         alien_rect.centerx = alien_x
         alien_y = random.randrange(100, 500)
         alien_rect.centery = alien_y
         hero_score += 1
-    else:
-        collide = False
+
 
     pygame.display.update()
     gamewindow.blit(background, background_rect)
@@ -100,8 +113,8 @@ while running:
     gamewindow.blit(text1, (20, 540))
     gamewindow.blit(text2, (20, 560))
 
-    # корректный выход
-    if event.type == pygame.QUIT:
+  # корректный выход
+  if event.type == pygame.QUIT:
         running = False
 
 
