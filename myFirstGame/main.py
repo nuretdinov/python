@@ -39,15 +39,15 @@ while running:
     rand_x = random.randrange(-30, 0)
     rand_y = random.randrange(-20, 20)
     alien_x += rand_x
-    alien_rect.centerx = alien_x
     alien_y += rand_y
-    alien_rect.centery = alien_y
-    if alien_x < 0:
+    if alien_x < -30:
         alien_score += 1
-        alien_x = 750
-        alien_rect.centerx = alien_x
+        alien_x = 780
         alien_y = random.randrange(100, 500)
-        alien_rect.centery = alien_y
+    if alien_y < 30:
+        alien_y += 20
+    if alien_y > 570:
+        alien_y -= 20
 
     for event in pygame.event.get():
         # движение героя
@@ -58,26 +58,27 @@ while running:
                     hero_look = False
                 if hero_x > 5:
                     hero_x -= 10
-                    hero_rect.centerx = hero_x
             elif event.key == pygame.K_RIGHT:
                 if not hero_look:
                     hero_sprite = pygame.transform.flip(hero_sprite, True, False)
                     hero_look = True
                 if hero_x < 690:
                     hero_x += 10
-                    hero_rect.centerx = hero_x
             elif event.key == pygame.K_UP:
                 if hero_y > 5:
                     hero_y -= 10
-                    hero_rect.centery = hero_y
             elif event.key == pygame.K_DOWN:
                 if hero_y < 500:
                     hero_y += 10
-                    hero_rect.centery = hero_y
 
 
     gamewindow.blit(hero_sprite, (hero_x, hero_y))
+    hero_rect.centery = hero_y
+    hero_rect.centerx = hero_x
+
     gamewindow.blit(alien_sprite, (alien_x, alien_y))
+    alien_rect.centerx = alien_x
+    alien_rect.centery = alien_y
 
     if pygame.Rect.colliderect(alien_rect, hero_rect):
         collide = True
