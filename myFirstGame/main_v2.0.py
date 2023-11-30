@@ -77,7 +77,7 @@ class Alien(pygame.sprite.Sprite):
         global alien_score
         self.rect.x -= self.speedy
         self.rect.y += random.randrange(-10, 10)
-        if self.rect.left < 0:
+        if self.rect.left < -20:
             self.rect.x = WIDTH + self.rect.width
             self.rect.y = random.randrange(50, 550)
             self.speedy = random.randrange(1, 10)
