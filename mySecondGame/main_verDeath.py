@@ -58,9 +58,6 @@ start = False
 nextbot = Nextbot()
 running = True
 quantity = 0
-reaction_speed = 0
-time_begin = 0
-time_end = 0
 
 while running:
 
@@ -83,27 +80,17 @@ while running:
                         shot = Shot(event.pos)
                         screen.blit(shot.image, shot.rect)
                         pygame.display.update()
-                        time_end = pygame.time.get_ticks()
-                        reaction_speed = time_end - time_begin
 
                     if pygame.Rect.colliderect(shot.rect, nextbot.rect):
                         quantity = 0
-                        pygame.time.wait(100)
-                        screen.fill(BLACK)
 
     if start:
         if pygame.time.get_ticks() > 5000 and pygame.time.get_ticks() % 10 == 0 and quantity == 0:
             nextbot = Nextbot()
             quantity = 1
             screen.blit(nextbot.image, nextbot.rect)
-            time_begin = pygame.time.get_ticks()
             random.choice(nextbot_snds).play()
 
-    score_font = pygame.font.Font(None, 20)
-    score_text = score_font.render(f'[ {reaction_speed} ms]', True, (255, 255, 255))
-    screen.blit(score_text, (20, 560))
-
     pygame.display.update()
-    # screen.fill(BLACK)
 
 pygame.quit()
