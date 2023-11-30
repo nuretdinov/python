@@ -9,9 +9,12 @@ pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Older Superman in a galaxy far, far away")
 clock = pygame.time.Clock()
-pygame.mixer.music.load("static/music/music.mp3")
-pygame.mixer.music.play()
-blow_sound = pygame.mixer.Sound("static/music/blow_sound.mp3")
+try:
+    pygame.mixer.music.load("static/music/music.mp3")
+    pygame.mixer.music.play()
+    blow_sound = pygame.mixer.Sound("static/music/blow_sound.mp3")
+except:
+    pass
 background = pygame.image.load("static/img/bg.jpg").convert()
 background_rect = background.get_rect()
 alien_imgs = []
@@ -132,7 +135,10 @@ while running:
             blow = Blow(hit.rect.center)
             all_sprites.add(blow)
             blows.add(blow)
-            blow_sound.play()
+            try:
+                blow_sound.play()
+            except:
+                pass
             add_aliens(3)
             hero_score += 1
 
