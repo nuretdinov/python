@@ -1,28 +1,41 @@
+
+"""def my_func(**x):
+        print(x)
+
+my_func(y=10, z=20)"""
+
+"""
+(import math) math.sqrt()
+
+cities = ['Moscow', 'New York', 'Tokyo']
+for city in cities:
+    print(city)
+    
+    
+friends = ['Max', 'Ann', 'Igor']
+friends.reverse()
+print(friends[0])
+print(friends.count('Ann'))
+
 num1 = input('Введите первое число: ')
 num2 = input('Введите второе число:')
 sum = int(num1) + int(num2)
-print('Сумма= ' + str(sum))
-
-# int, float, str, bool
-# + - * / % ** > < >= <= == != and or not (import math) math.sqrt()
-#1<2<3<4
-# print(type(x)), float(x) int(x) str(x)
+print(f'Сумма= {sum}')
 
 #строки
 # обратится в элементу строки str[5], str[:5] - от начала до 5ог, str[5:] - с 5ого до конца, str[5:7] - с 5ого до 7ого, str[::2] - с шагом 2
 #len() count() find() split
-"""
-x=10
-y=20
-print(f'выводим строку c переменной {x} и {y}')
-"""
+
+# x=10
+# y=20
+# print(f'выводим строку c переменной {x} и {y}')
 
 friends_list = ['Max', 'Ann', 'Roman']  # список - list - могут быть разные типы данных элементов
 print(friends_list[2])
-
 name_list = {'Max', 'Ann', 'Muhtar'}  # set - множество - последовательность уникальных - неупорядоченный?
 guests = {'Max': 'boy', 'Ann': 'girl', 'Roman': 'boy'}  # dict - словарь - список пара-ключ
-# (10, 20, 'строка') - tuple - кортеж - последовательность неизменяемых объектов
+config = (10, 20, 'black') - tuple - кортеж - последовательность неизменяемых объектов
+
 i = 0
 while i <= 10:
     print(i)
@@ -45,6 +58,7 @@ for name in friends_list:
         print('dog')
 
 for name in friends_list:
+
     match name:
         case "Max":
             print('boy')
@@ -53,13 +67,19 @@ for name in friends_list:
         case _:
             print('dog')
 
+city = input('Введите название города')
+match city:
+    case "Москва":
+        print('Россия')
+    case "Вашингтон":
+        print('США')
+    case _:
+        print('неизвестный город')
 
-# break, continue
 def my_func(a, b):
     # global vars
     sum = a + b
     return sum
-
 
 result = my_func(2, 5)
 print(result)
@@ -84,3 +104,9 @@ finally:
     print('Все действия выполнены');
 
 # raise errorName - вызывает необходимую ошибку
+
+
+sum = lambda x, y: x + y
+print(sum(2, 5))
+
+"""

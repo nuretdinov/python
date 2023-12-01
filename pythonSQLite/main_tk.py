@@ -11,7 +11,6 @@ with sqlite3.connect('phonebook.db') as conn:
 # используем для обновления вывода списка контактов
 var_change_contact_list = StringVar()
 
-
 # функция вывода содержимого записной книжки
 def get_phonebook():
     bd_content = ''
@@ -21,9 +20,7 @@ def get_phonebook():
         bd_content = bd_content + str(field[0]) + ' ' + str(field[1]) + ' ' + str(field[2]) + '\n'
     var_change_contact_list.set(bd_content)
 
-
 get_phonebook()
-
 
 # функция добавления нового контакта
 def add_contact():
@@ -43,7 +40,6 @@ def add_contact():
         get_phonebook()
     else:
         messagebox.showerror('Запись не добавлена', 'Заполните поля!')
-
 
 root.title('Записная книжка')
 # формируем область для вывода записной книжки

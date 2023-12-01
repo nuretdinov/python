@@ -4,10 +4,8 @@ num1 = 0
 num2 = 0
 math_sing = ''
 
-
 def num(x):
     ent_calc.insert(END, x)
-
 
 def sign(z):
     global num1, math_sing
@@ -15,10 +13,8 @@ def sign(z):
     ent_calc.delete(0, END)
     math_sing = z
 
-
 def clr():
     ent_calc.delete(0, END)
-
 
 def equal():
     global num1, num2, math_sing
@@ -42,7 +38,6 @@ def equal():
             result = 'Ошибка, знак!'
     ent_calc.delete(0, END)
     ent_calc.insert(0, result)
-
 
 root = Tk()
 root.geometry('170x210+200+200')

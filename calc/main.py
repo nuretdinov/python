@@ -1,3 +1,5 @@
+from tkinter import *
+
 def calc():
     num1 = ent_num1.get()
     num2 = ent_num2.get()
@@ -28,9 +30,6 @@ def calc():
 
     ent_result.delete(0, END)
     ent_result.insert(0, result)
-
-
-from tkinter import *
 
 root = Tk()
 root.geometry('300x300+200+200')

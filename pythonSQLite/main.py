@@ -3,14 +3,12 @@ import sqlite3
 connection = sqlite3.connect('phonebook.db')
 cursor = connection.cursor()
 
-"""
-# Создаем БД
-conn = sqlite3.connect('phonebook.db')
+
+"""conn = sqlite3.connect('phonebook.db')
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, tel INTEGER);''') #NULL REAL BLOB
 cursor.execute('''ALTER TABLE users ADD COLUMN surname TEXT''')
-conn.close()
-"""
+conn.close()"""
 
 
 def get_phonebook():

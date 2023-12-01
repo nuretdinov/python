@@ -1,5 +1,4 @@
-from datetime import datetime, date, time
-
+from datetime import date
 
 class User:
     def __init__(self, name, birth, email):
@@ -22,12 +21,10 @@ new_user = User(
 print(new_user.get_age())
 print(new_user.email)
 
-
 class Admin(User):
     def __init__(self, name, birth, email, pwd):
         super().__init__(name, birth, email)
         self.pwd = pwd
-
 
 new_admin = Admin(
     "Ann",

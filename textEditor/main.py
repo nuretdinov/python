@@ -5,14 +5,12 @@ from tkinter import messagebox
 # глобальная переменная для хранения имени файла, с которым работаем в редакторе
 file_name = ''
 
-
 # функция создания нового файла
 def new_file():
     global file_name
     if messagebox.askquestion('Внимание', 'Текущий файл не сохранен \n Все создать новый?') == 'yes':
         main_text_field.delete(1.0, END)
         file_name = ''
-
 
 # функция открытия файла
 def open_file():
@@ -25,7 +23,6 @@ def open_file():
                 fileText = f.read()
                 main_text_field.delete(1.0, END)
                 main_text_field.insert(0.0, fileText)
-
 
 # функция сохранения файла
 def save_file():
@@ -40,22 +37,18 @@ def save_file():
             with open(file_name, 'w', encoding="utf8") as f:
                 f.write(new_file_text)
 
-
 # функция выхода из приложения
 def exit_app():
     if messagebox.askquestion('Выход из программы', 'Выйти?') == 'yes': window.quit()
-
 
 # функция изменения цветовой схемы приложения
 def theme_white():
     main_text_field['bg'] = 'white'
     main_text_field['fg'] = 'black'
 
-
 def theme_black():
     main_text_field['bg'] = 'black'
     main_text_field['fg'] = 'white'
-
 
 # создаем окно приложения
 window = Tk()
