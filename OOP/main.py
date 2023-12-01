@@ -12,15 +12,6 @@ class User:
         return user_age
 
 
-new_user = User(
-    "Max",
-    date(1995, 8, 25),
-    "max@gmail.com",
-)
-
-print(new_user.get_age())
-print(new_user.email)
-
 class Admin(User):
     def __init__(self, name, birth, email, pwd):
         super().__init__(name, birth, email)
@@ -32,6 +23,16 @@ new_admin = Admin(
     "Ann@gmail.com",
     "12345",
 )
+
+new_user = User(
+    "Max",
+    date(1995, 8, 25),
+    "max@gmail.com",
+)
+
+print(new_user.get_age())
+print(new_user.email)
+
 print(new_admin.get_age())
 print(new_admin.email)
 print(new_admin.pwd)

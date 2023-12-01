@@ -2,6 +2,7 @@ import logging
 import sqlite3
 import os
 
+
 logging.basicConfig(level=logging.INFO, filename="main.log")
 
 class Db:
