@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}О проекте{% endblock %}
-{% block main_content %}Информация о проекте...{% endblock %}
+{% block title %}Мои заметки{% endblock %}
+{% block content %}
+<p>Мини-сервис для сохранения заметок онлайн.</p>
+<p>Создан при помощи фреймворка Flask и БД SQLite.</p>
+{% endblock %}
 {% block links %}<a href="{{ url_for('index') }}">На главную</a>{% endblock %}

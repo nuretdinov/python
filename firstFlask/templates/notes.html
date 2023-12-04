@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Мои заметки{% endblock %}
+{% block content %}
+<div class="mt-4">
+    <ul class="list-group">
+        {% for note in notes %}
+        <li class="list-group-item">
+            <p>{{ note }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+{% block links %}
+<div><a href="{{ url_for('index') }}">На главную</a></div>
+<div><a href="{{ url_for('get_page_about') }}">О приложение</a></div>
+{% endblock %}
