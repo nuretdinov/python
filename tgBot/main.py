@@ -50,7 +50,7 @@ async def send_welcome(message: types.Message):
 async def send_welcome(message: types.Message):
     await message.reply("/start - начало работы\n /help - список команд\n /bye - конец работы\n")
 
-# обработка любого текста от пользователя (неизместного боту)
+# обработка любого текста от пользователя (неизвестного боту)
 @dp.message_handler()
 async def echo(message: types.Message):
     await message.answer("Я еще не знаю команду '" + message.text + "'")
