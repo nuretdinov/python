@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-git-scm.com (при установке: "Adjusting your PATH environment" (Настройка системной переменной Path), выбери "Use Git and optional Unix tools from the Windows Command Prompt" (Запуск Git и соответствующих Unix утилит через командную строку Windows, нижняя опция)
-
 Создаём Git-репозиторий (локальный)
 git init
 
-(Initialized empty Git repository in ~/djangogirls/.git/)
 git config --global user.name "Your Name"
 git config --global user.email you@example.com
 
@@ -16,11 +12,9 @@ myvenv
 db.sqlite3
 /static
 
-
 сохраняем
 git add --all .
-git commit -m "My Django Girls app, first commit"
-
+git commit -m "text"
 
 Загружаем код в репозиторий GitHub
 на GitHub.com создать новый репозиторий
@@ -33,40 +27,4 @@ git push -u origin master
 git status
 git add --all .
 git commit -m "добавляем вью"
-=======
-git-scm.com (при установке: "Adjusting your PATH environment" (Настройка системной переменной Path), выбери "Use Git and optional Unix tools from the Windows Command Prompt" (Запуск Git и соответствующих Unix утилит через командную строку Windows, нижняя опция)
-
-Создаём Git-репозиторий (локальный)
-git init
-
-(Initialized empty Git repository in ~/djangogirls/.git/)
-git config --global user.name "Your Name"
-git config --global user.email you@example.com
-
-создать файл .gitignore в корневом каталоге репозитория
-*.pyc
-*~
-__pycache__
-myvenv
-db.sqlite3
-/static
-
-
-сохраняем
-git add --all .
-git commit -m "My Django Girls app, first commit"
-
-
-Загружаем код в репозиторий GitHub
-на GitHub.com создать новый репозиторий
-
-git remote add origin https://github.com/<your-github-username>/my-first-blog.git
-git push -u origin master
-
-------------------
-
-git status
-git add --all .
-git commit -m "добавляем вью"
->>>>>>> origin/master
 git push
