@@ -1,0 +1,14 @@
+1. python --version, aiogram не устанавливается на 12 версии python
+2. python -m venv myvenv
+3. myvenv\Scripts\activate
+4. pip install aiogram (pip install --force-reinstall -v "aiogram==2.23.1")
+
+5. @BotFather в телеграм
+6. /newbot
+7. сохранить token HTTP API 
+
+
+
+https://core.telegram.org/bots/api
+https://docs.aiogram.dev/en/latest/index.html
+https://www.unicode.org/emoji/charts/full-emoji-list.html
