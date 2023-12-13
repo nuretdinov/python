@@ -1,0 +1,10 @@
+в настройках апача:
+
+AddHandler      cgi-script              .cgi    .pl .py
+
+---
+
+создаем программу:
+#!C:/Users/nured/AppData/Local/Programs/Python/Python312/python.exe
+print("Content-Type: text/html\n")
+print('Hello')
