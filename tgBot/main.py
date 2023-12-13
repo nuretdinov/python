@@ -1,3 +1,4 @@
+# aiogram v.2.32
 from aiogram import Bot, Dispatcher, executor, types
 import requests, json
 # токены телеграм и яндекс.погоды
